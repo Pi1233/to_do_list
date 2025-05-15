@@ -8,7 +8,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(express.json());
 
-mongoose.connect("mongodb+srv://saurabhmahajanq:<db_password>@todolist.blq6qnx.mongodb.net/?retryWrites=true&w=majority&appName=todolist");
+mongoose.connect("mongodb+srv://saurabhmahajanq:OCy203XCkwIDyLM8@todolist.blq6qnx.mongodb.net/?retryWrites=true&w=majority&appName=todolist");
 const trySchema = new mongoose.Schema({
   name: String,
   priority: {

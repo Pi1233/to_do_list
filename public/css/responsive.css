@@ -1,0 +1,134 @@
+@media only screen {
+  .inp {
+    overflow: auto;
+  }
+}
+
+@media only screen and (max-width: 1370px) {
+  form {
+    padding-top: 5px;
+  }
+
+  .input {
+    width: 40%;
+    font-size: large;
+  }
+
+  .inp {
+    display: flex;
+  }
+  .prior {
+    margin-right: 10px;
+  }
+}
+
+@media only screen and (max-width: 1115px) {
+  .button {
+    font-size: 1.3em;
+  }
+
+  .input {
+    font-size: small;
+  }
+
+  .prior {
+    font-size: 13px;
+  }
+}
+
+@media only screen and (max-width: 901px) {
+  .button {
+    display: flex;
+    justify-self: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .input {
+    font-size: small;
+    width: 50%;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  .button {
+    font-size: 12px;
+  }
+
+  .prior {
+    font-size: 9px;
+  }
+
+  .input {
+    font-size: 9px;
+  }
+
+  .inp {
+    font-size: 9px;
+  }
+
+  .inp input {
+    margin-right: 5px;
+  }
+
+  .updatebutton {
+    padding-top: 0;
+  }
+
+  .deletebutton,
+  .del {
+    padding: 0 !important;
+  }
+}
+
+@media only screen and (max-width: 630px) {
+  .prior {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+@media only screen and (max-width: 525px) {
+  .box h1 {
+    font-size: large;
+  }
+}
+
+@media only screen and (max-width: 449px) {
+  .input {
+    display: flex;
+    justify-self: center;
+    font-size: 7px;
+  }
+
+  .prior {
+    display: flex;
+    justify-self: center;
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+}
+
+@media only screen and (max-width: 353px) {
+  .inputform {
+    padding-top: 0;
+  }
+
+  .input {
+    font-size: 0.3em;
+    padding-top: 1px;
+    margin-right: 1em;
+  }
+
+  .inp input {
+    margin-right: 0.5em;
+    width: 7px;
+    margin-top: 4.5px;
+  }
+
+  .box h1 {
+    font-size: 15px;
+  }
+}

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo list</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+  </head>
+  <body>
+    <div class="box">
+      <h1>Todo list</h1>
+    </div>
+    <div class="box">
+        <div >
+           
+      <% exes.forEach(function(items,i){ %>
+
+<div class="inp">
+          <input class="checkbox" type="checkbox" id="checkbox-<%= i %>" data-index="<%= i %>" data-id="<%= items._id %>"/>
+          <p class="para" id="task-<%= i %>" name="parag"  data-index="<%= i %>" contenteditable="false" style="outline:none"><%= items.name %></p>
+          <p id="priority-<%= i %>" class="prio-rity" style="outline:none" > |Priority: <%= items.priority %></p>
+
+          <select name="priority" class="prior changepriority" id="options-<%= i %>" style="display:none">
+            <option selected disabled>Priority</option>
+            <option value="high">high</option>
+            <option value="medium">medium</option>
+            <option value="low">low</option>
+          </select>
+
+          <form class="updatebutton" >
+
+            <button class="update11" name="upd" >
+              <ion-icon name="create-outline" class="iconedit" ></ion-icon>
+              <form action="/update"><ion-icon name="checkmark-outline" style="display:none" class="icontick"></ion-icon></form>
+            </button>
+
+          </form>
+
+          <form class="deletebutton" action="/delete" method="POST" >
+            <button name="del" value="<%= items._id %>">
+              <ion-icon name="trash-outline" class="button"></ion-icon>
+            </button>
+          </form>
+          
+    </div>
+
+    <hr>
+
+     <% }) %>
+    
+      <form action="/" method="POST" class="inputform">
+        <input class="input" type="text" name="ele1" placeholder="Enter the task" required/>
+        <select name="priority" class="prior" required >
+          <option selected disabled>Priority</option>
+          <option value="high">high</option>
+          <option value="medium">medium</option>
+          <option value="low">low</option>
+        </select>
+        <button class="button" type="submit">+</button>
+      </form>
+
+    </div>  
+  </div>   
+    </div>
+    </div>
+
+    <script>
+      
+const checkboxes = document.querySelectorAll(".checkbox");
+
+checkboxes.forEach((checkbox) => {
+  checkbox.addEventListener("change", function (event) {
+    
+    const taskId = this.getAttribute("data-index");
+    const taskParagraph = document.getElementById("task-" + taskId);
+    const priorityParagraph = document.getElementById("priority-" + taskId);
+
+    if (this.checked) {
+      taskParagraph.classList.add("checked");
+      priorityParagraph.classList.add("checked");
+      
+    } else {
+      taskParagraph.classList.remove("checked");
+      priorityParagraph.classList.remove("checked");
+    }
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".update11").forEach(btn => {
+    const checkbox = btn.closest(".inp").querySelector(".checkbox");
+    btn.addEventListener("click", e => {
+      e.preventDefault(); 
+  
+      const index = checkbox.dataset.index;
+      const para = document.getElementById(`task-${index}`);
+      const para2 = document.getElementById(`priority-${index}`)
+      const optionsel = document.getElementById(`options-${index}`)
+      const edit = btn.querySelector(".iconedit")
+      const tick = btn.querySelector(".icontick")
+     
+      if(para.contentEditable=="false" ){
+        para.contentEditable = true;
+        para.focus();
+        edit.style.display = "none";
+        tick.style.display = "";
+
+        para2.style.display = "none";
+        optionsel.style.display = "";
+
+      }else{
+        
+        para.contentEditable = false;
+        edit.style.display = "";
+        tick.style.display = "none";
+
+        para2.style.display = "";
+        optionsel.style.display = "none";
+
+
+        newpara = para.innerHTML;
+        priorityupdate = document.getElementById(`options-${index}`).value;
+
+        const id = checkbox.dataset.id;
+      
+        fetch('/update',{
+          method:'PUT',
+          headers: {
+          'Content-Type': 'application/json'
+            },
+          body:JSON.stringify({id,data:newpara,priorityupdate})
+        })
+        .then(response =>{                                     // For writing in DOM manually because it will not work without it.
+                                                              //  It worked with name variable because I was writing to DOM manually (newpara = para.innerHTML)
+          if(response.ok){
+            para2.innerText = `Priority: ${priorityupdate}`;
+
+          } else{
+            alert("Failed to update priority variable")
+          }
+        })
+      }  
+      
+      
+    });
+  });
+});
+
+const placeholderchange = document.querySelector('.input')
+
+function changeplaceholder(){
+  if(window.innerWidth<500){
+    placeholderchange.placeholder = "Enter task";
+
+  } else {
+    placeholderchange.placeholder = "Enter the task";
+  }
+}
+
+changeplaceholder();
+window.addEventListener('resize',changeplaceholder)
+      
+    </script>
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  </body>
+</html>

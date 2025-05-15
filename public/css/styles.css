@@ -1,0 +1,105 @@
+html {
+  min-height: 100vh;
+  background-color: skyblue;
+  background-image: linear-gradient(15deg, #9558ff, #e4e9fd 60%);
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  width: 27%;
+  background-color: white;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+  border-radius: 0.5em;
+  box-shadow: 5px 5px 10px black;
+}
+
+.box h1 {
+  margin: 0.2em;
+  text-align: center;
+}
+
+form input {
+  width: 40%;
+  text-decoration: none;
+  border: none;
+  font-size: 1.5em;
+  text-align: center;
+  border-radius: 1em;
+}
+
+.prior {
+  display: inline-flex;
+  font-size: 1em;
+  vertical-align: text-bottom;
+  margin-left: 1em;
+  margin-right: 3em;
+}
+
+form input:focus {
+  outline: none;
+  text-decoration: none;
+  border: none;
+}
+
+form button {
+  background-color: #ca81e4;
+  border-radius: 3em;
+  height: 1.9em;
+  width: 1.9em;
+  font-size: 2em;
+  margin-bottom: 0.2em;
+  box-shadow: 5px 5px 5px lightblue;
+  margin-top: 2px;
+}
+
+form button:hover {
+  color: white;
+  background-color: lightblue;
+}
+
+form button:focus {
+  box-shadow: inset 5px 5px 5px black;
+}
+
+.inp {
+  display: flex;
+  margin: 1em;
+  font-size: 1em;
+}
+
+.inp input {
+  margin-right: 1em;
+}
+
+hr {
+  opacity: 0.2;
+}
+
+.checked {
+  text-decoration: line-through;
+  color: grey;
+  opacity: 0.5;
+}
+
+.deletebutton,
+.updatebutton {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+  font-size: 0.6em;
+}
+
+.prio-rity {
+  font-size: 1em;
+  margin-left: 4px;
+  flex: none;
+}
+
+.changepriority {
+  height: fit-content;
+  display: inline-flex;
+  align-self: center;
+}

@@ -19,10 +19,9 @@
 <div class="inp">
           <input class="checkbox" type="checkbox" id="checkbox-<%= i %>" data-index="<%= i %>" data-id="<%= items._id %>"/>
           <p class="para" id="task-<%= i %>" name="parag"  data-index="<%= i %>" contenteditable="false" style="outline:none"><%= items.name %></p>
-          <p id="priority-<%= i %>" class="prio-rity" style="outline:none" > |Priority: <%= items.priority %></p>
+          <p id="priority-<%= i %>" class="prio-rity" style="outline:none" >  Priority: <%= items.priority %></p>
 
           <select name="priority" class="prior changepriority" id="options-<%= i %>" style="display:none">
-            <option selected disabled>Priority</option>
             <option value="high">high</option>
             <option value="medium">medium</option>
             <option value="low">low</option>

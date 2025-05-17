@@ -25,7 +25,7 @@ app.get("/", async function (req, res) {
     foundItems = await item.find({});
     res.render("list", { exes: foundItems });
   } catch (error) {
-    console.error("error fetching items:", err);
+    console.error("error fetching items:", error);
   }
 });
 

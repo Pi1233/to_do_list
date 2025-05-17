@@ -8,7 +8,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(express.json());
 
-mongoose.connect("mongodb+srv://saurabhmahajanq:OCy203XCkwIDyLM8@todolist.blq6qnx.mongodb.net/?retryWrites=true&w=majority&appName=todolist");
+mongoose.connect("mongodb://localhost:27017/todo");
 const trySchema = new mongoose.Schema({
   name: String,
   priority: {
@@ -54,10 +54,8 @@ app.post("/", async function (req, res) {
   }
 });
 
-app.post("/delete", async function (req, res) {
-  const deleted = req.body.del;
-  await item.findByIdAndDelete(deleted);
-  res.redirect("/");
+app.delete("/delete/:id", async function (req, res) {
+  await item.findByIdAndDelete(req.params.id);
 });
 
 app.put("/update", async function (req, res) {
@@ -68,3 +66,4 @@ app.put("/update", async function (req, res) {
   await item.findByIdAndUpdate(id, { name: newpara, priority: priorityupdate });
   res.status(200).json({ message: "Update successful" });
 });
+

@@ -56,6 +56,7 @@ app.post("/", async function (req, res) {
 
 app.delete("/delete/:id", async function (req, res) {
   await item.findByIdAndDelete(req.params.id);
+  res.status(200).json({ message: "Deleted successfully" });
 });
 
 app.put("/update", async function (req, res) {

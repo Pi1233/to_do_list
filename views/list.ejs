@@ -22,6 +22,7 @@
           <p id="priority-<%= i %>" class="prio-rity" style="outline:none" >  Priority: <%= items.priority %></p>
 
           <select name="priority" class="prior changepriority" id="options-<%= i %>" style="display:none">
+            
             <option value="high">high</option>
             <option value="medium">medium</option>
             <option value="low">low</option>
@@ -36,11 +37,10 @@
 
           </form>
 
-          <form class="deletebutton" action="/delete" method="POST" >
-            <button name="del" value="<%= items._id %>">
-              <ion-icon name="trash-outline" class="button"></ion-icon>
-            </button>
-          </form>
+          <button class="deletebutton" data-id="<%= items._id %>">
+            <ion-icon name="trash-outline" class="button"></ion-icon>
+          </button>
+
           
     </div>
 
@@ -67,6 +67,24 @@
     <script>
       
 const checkboxes = document.querySelectorAll(".checkbox");
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".deletebutton").forEach(button => {
+    button.addEventListener("click", async (e) => {
+      e.preventDefault();
+      const id = button.getAttribute("data-id");
+
+        const response = await fetch(`/delete/${id}`, {
+          method: "DELETE",
+        });
+          // Reload to reflect the change
+          window.location.reload();
+        
+      
+  });
+  });
+});
+
 
 checkboxes.forEach((checkbox) => {
   checkbox.addEventListener("change", function (event) {

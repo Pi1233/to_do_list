@@ -80,6 +80,15 @@ form button:focus {
   box-shadow: inset 5px 5px 5px black;
 }
 
+.deletebutton:hover{
+  color: white;
+  background-color: lightblue;
+}
+
+.deletebutton:focus{
+  box-shadow: inset 5px 5px 5px black;
+}
+
 .inp {
   display: flex;
   margin: 1em;

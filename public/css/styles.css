@@ -55,6 +55,22 @@ form button {
   margin-top: 2px;
 }
 
+.deletebutton {
+  background-color: #ca81e4;
+  border-radius: 3em;
+  font-size: 2em;
+  box-shadow: 5px 5px 5px lightblue;
+  height: 4em;
+  width: 4em;
+  justify-content: center;
+  align-self: center;
+  margin-bottom: 3px;
+}
+
+.deletebutton ion-icon {
+  font-size: 1.9em;
+}
+
 form button:hover {
   color: white;
   background-color: lightblue;

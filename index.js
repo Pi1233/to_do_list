@@ -8,7 +8,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(express.json());
 
-mongoose.connect("mongodb://localhost:27017/todo");
+mongoose.connect("mongodb+srv://saurabhmahajanq:OCy203XCkwIDyLM8@todolist.blq6qnx.mongodb.net/?retryWrites=true&w=majority&appName=todolist");
 const trySchema = new mongoose.Schema({
   name: String,
   priority: {
